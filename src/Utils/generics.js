@@ -72,6 +72,11 @@ exports.Browsers = {
     /** The appropriate browser based on your OS & release */
     appropriate: browser => [PLATFORM_MAP[(0, os_1.platform)()] || 'Ubuntu', browser, (0, os_1.release)()]
 };
+const getPlatformId = (browser) => {
+    const platformType = WAProto_1.proto.DeviceProps.PlatformType[browser.toUpperCase()];
+    return platformType ? platformType.toString().toString() : '1'; // Firefox
+};
+exports.getPlatformId = getPlatformId;
 exports.BufferJSON = {
     replacer: (k, value) => {
         if (Buffer.isBuffer(value) || value instanceof Uint8Array || (value === null || value === void 0 ? void 0 : value.type) === 'Buffer') {
